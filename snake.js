@@ -1,0 +1,9 @@
+const width=24,height=16,board=document.querySelector('#board'),scoreEl=document.querySelector('#score'),gameOverEl=document.querySelector('#game-over'),restartButton=document.querySelector('#restart');let snake,food,direction,nextDirection,score,timer,playing;
+const same=(a,b)=>a.x===b.x&&a.y===b.y;
+function placeFood(){do{food={x:Math.floor(Math.random()*width),y:Math.floor(Math.random()*height)}}while(snake.some(p=>same(p,food)))}
+function reset(){snake=[{x:12,y:8},{x:11,y:8},{x:10,y:8}];direction={x:1,y:0};nextDirection=direction;score=0;playing=true;scoreEl.textContent=score;gameOverEl.hidden=true;placeFood();clearInterval(timer);timer=setInterval(step,125);render();board.focus()}
+function step(){direction=nextDirection;const head={x:snake[0].x+direction.x,y:snake[0].y+direction.y},eats=same(head,food),hitsWall=head.x<0||head.x>=width||head.y<0||head.y>=height,body=eats?snake:snake.slice(0,-1);if(hitsWall||body.some(p=>same(p,head)))return endGame();snake.unshift(head);if(eats){score++;scoreEl.textContent=score;placeFood()}else snake.pop();render()}
+function render(){let output='+'+'-'.repeat(width*2-1)+'+\n';for(let y=0;y<height;y++){let row='|';for(let x=0;x<width;x++){const point={x,y},segment=snake.findIndex(p=>same(p,point));row+=segment===0?'O':segment>0?'o':same(point,food)?'@':' ';row+=x===width-1?'|':' '}output+=row+'\n'}board.textContent=output+'+'+'-'.repeat(width*2-1)+'+'}
+function endGame(){playing=false;clearInterval(timer);gameOverEl.hidden=false;restartButton.focus()}
+function setDirection(x,y){if(playing&&!(direction.x===-x&&direction.y===-y))nextDirection={x,y}}
+document.addEventListener('keydown',event=>{const keys={w:[0,-1],ArrowUp:[0,-1],s:[0,1],ArrowDown:[0,1],a:[-1,0],ArrowLeft:[-1,0],d:[1,0],ArrowRight:[1,0]};if(keys[event.key]){event.preventDefault();setDirection(...keys[event.key])}});restartButton.addEventListener('click',reset);reset();

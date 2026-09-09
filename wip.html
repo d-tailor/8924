@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Work in progress · tiny.fun</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="wip-page">
+    <main class="wip-shell">
+      <a class="back-link" href="index.html">&larr; back to the buttons</a>
+      <p class="eyebrow" id="button-number">BUTTON</p>
+      <h1>WORK IN<br />PROGRESS</h1>
+      <pre class="workers" aria-label="ASCII construction workers">
+       _O_       _O_       _O_
+      / | \     / | \     / | \
+       / \       / \       / \
+    ___| |_______| |_______| |___
+   |       BUILDING COOL STUFF      |
+   |________________________________|
+        </pre>
+      <p>This experiment is still being assembled.</p>
+    </main>
+    <script>
+      const button = new URLSearchParams(window.location.search).get('button');
+      if (button) document.getElementById('button-number').textContent = `BUTTON ${button}`;
+    </script>
+  </body>
+</html>
