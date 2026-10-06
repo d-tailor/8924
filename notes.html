@@ -7,34 +7,31 @@
 
     <title>tiny.fun — drop</title>
 
-    <!-- CHANGED: Reuse the existing site-wide stylesheet -->
     <link rel="stylesheet" href="styles.css" />
   </head>
 
-  <!-- CHANGED: New page-specific class for the notes experiment -->
   <body class="notes-page">
     <main class="notes-shell">
-      <!-- CHANGED: Simple way back to the tiny.fun homepage -->
       <header class="notes-header">
         <a class="back-link" href="index.html">← tiny.fun</a>
 
-        <!-- CHANGED: Main interaction — creates a new note -->
-        <button class="new-note-button" type="button" id="new-note-button">
+        <button
+          class="new-note-button"
+          type="button"
+          id="new-note-button"
+        >
           + NEW NOTE
         </button>
       </header>
 
-      <!-- CHANGED: The open space where notes will live -->
+      <!-- The open space where notes live -->
       <section
         class="notes-canvas"
         id="notes-canvas"
         aria-label="Notes canvas"
-      >
-        <!-- Notes will be created here by JavaScript -->
-      </section>
+      ></section>
     </main>
 
-    <!-- CHANGED: Separate JavaScript for this experiment -->
     <script src="notes.js"></script>
   </body>
 </html>
