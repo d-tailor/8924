@@ -1,12 +1,9 @@
-```html
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>tiny.fun — drop</title>
-
     <link rel="stylesheet" href="styles.css" />
   </head>
 
@@ -14,25 +11,30 @@
     <main class="notes-shell">
       <header class="notes-header">
         <a class="back-link" href="index.html">← tiny.fun</a>
-
-        <button
-          class="new-note-button"
-          type="button"
-          id="new-note-button"
-        >
-          + NEW NOTE
-        </button>
+        <div class="notes-heading">
+          <p class="eyebrow">A TEMPORARY THOUGHT SPACE</p>
+          <h1>drop a note</h1>
+        </div>
+        <button class="new-note-button" type="button" id="new-note-button">+ CREATE NOTE</button>
       </header>
 
-      <!-- The open space where notes live -->
-      <section
-        class="notes-canvas"
-        id="notes-canvas"
-        aria-label="Notes canvas"
-      ></section>
+      <p class="notes-hint">Write something, then drag it anywhere. Notes disappear when you leave.</p>
+      <section class="notes-canvas" id="notes-canvas" aria-label="Notes canvas"></section>
     </main>
+
+    <dialog class="note-dialog" id="note-dialog" aria-labelledby="dialog-title">
+      <form id="note-form">
+        <p class="eyebrow">A LITTLE THOUGHT</p>
+        <h2 id="dialog-title">What’s on your mind?</h2>
+        <label class="visually-hidden" for="note-text">Your note</label>
+        <textarea id="note-text" name="note" rows="5" maxlength="400" placeholder="Type a note..." required></textarea>
+        <div class="dialog-actions">
+          <button class="dialog-cancel" type="button" id="cancel-note">CANCEL</button>
+          <button class="dialog-create" type="submit">DROP NOTE ↗</button>
+        </div>
+      </form>
+    </dialog>
 
     <script src="notes.js"></script>
   </body>
 </html>
-```
